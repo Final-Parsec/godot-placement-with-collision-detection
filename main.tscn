@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://dejuvi3vu0xg1"]
+[gd_scene load_steps=6 format=3 uid="uid://dejuvi3vu0xg1"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ods6b"]
+[ext_resource type="PackedScene" uid="uid://bgimrwtyuy3c4" path="res://house.tscn" id="2_iad2n"]
+[ext_resource type="Texture2D" uid="uid://bd8sehj3yxpax" path="res://house.png" id="2_s1dgc"]
+[ext_resource type="Script" path="res://cursor_indicator.gd" id="3_m2mtc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6lr1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1dgc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_ods6b")
+house_scene = ExtResource("2_iad2n")
+
+[node name="CursorIndicator" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r6lr1")
+script = ExtResource("3_m2mtc")

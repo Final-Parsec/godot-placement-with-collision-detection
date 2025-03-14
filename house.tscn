@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgimrwtyuy3c4"]
+
+[ext_resource type="Texture2D" uid="uid://bd8sehj3yxpax" path="res://house.png" id="1_c7o7y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hiiyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c7o7y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3m0"]
+size = Vector2(89, 76)
+
+[node name="House" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hiiyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_0j3m0")
