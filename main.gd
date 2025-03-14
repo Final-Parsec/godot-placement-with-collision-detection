@@ -17,7 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("place_house") && can_build:
 		var house = house_scene.instantiate()
-		house.position = get_global_mouse_position()
+		house.position = get_global_mouse_position().snapped(Vector2(50, 50))
 		$HouseContainer.add_child(house)
 		
 	if event.is_action_released("place_house") && !can_build:

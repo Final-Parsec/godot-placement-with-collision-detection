@@ -9,5 +9,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position = get_global_mouse_position()
+	global_position = get_global_mouse_position().snapped(Vector2(50, 50))
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
