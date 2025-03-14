@@ -36,7 +36,22 @@ animations = [{
 script = ExtResource("1_ods6b")
 house_scene = ExtResource("2_iad2n")
 
+[node name="HouseContainer" type="Node2D" parent="."]
+
 [node name="CursorIndicator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r6lr1")
 animation = &"invalid"
 script = ExtResource("3_m2mtc")
+
+[node name="InvalidPlacementMessage" type="Label" parent="."]
+offset_left = 341.0
+offset_top = 282.0
+offset_right = 853.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 60
+text = "Can't Build There!"
+
+[node name="HideInvalidPlacementMessage" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="HideInvalidPlacementMessage" to="." method="_on_hide_invalid_placement_message_timeout"]

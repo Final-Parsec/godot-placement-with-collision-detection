@@ -6,7 +6,7 @@ var can_build = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$InvalidPlacementMessage.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +18,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("place_house") && can_build:
 		var house = house_scene.instantiate()
 		house.position = get_global_mouse_position()
-		add_child(house)
+		$HouseContainer.add_child(house)
+		
+	if event.is_action_released("place_house") && !can_build:
+		$InvalidPlacementMessage.visible = true
+		$HideInvalidPlacementMessage.start()
 		
 func _physics_process(delta: float) -> void:
 	var world_space = get_world_2d().direct_space_state
@@ -35,3 +39,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		can_build = false
 		$CursorIndicator.animation = "invalid"
+
+
+func _on_hide_invalid_placement_message_timeout() -> void:
+	$InvalidPlacementMessage.visible = false
