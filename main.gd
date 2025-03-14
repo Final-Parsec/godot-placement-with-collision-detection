@@ -30,8 +30,8 @@ func _physics_process(delta: float) -> void:
 	params.transform = Transform2D(0, $CursorIndicator.global_position)
 	var collision = world_space.collide_shape(params, 1)
 	if collision.is_empty():
-		# we overlap a building
 		can_build = true
+		$CursorIndicator.animation = "valid"
 	else:
-		# we are in open space
 		can_build = false
+		$CursorIndicator.animation = "invalid"
